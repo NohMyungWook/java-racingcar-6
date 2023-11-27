@@ -6,7 +6,9 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 import racingcar.view.constant.ViewMessage;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static racingcar.util.Constant.*;
 
@@ -21,6 +23,8 @@ public class RacingCarPlay {
         for (int startIndex = START_INDEX; startIndex < playCount; startIndex++) {
             playRacing(racingCars);
         }
+
+        showWinner(racingCars);
     }
 
     public List<RacingCar> registerRacingCars() {
@@ -47,5 +51,19 @@ public class RacingCarPlay {
         racingCars.stream()
                 .map(RacingCar::getNameAndDistance)
                 .forEach(System.out::println);
+    }
+
+    public void showWinner(List<RacingCar> racingCars) {
+        int maxDistance = racingCars.stream()
+                .max(Comparator.comparing(RacingCar::getDistance))
+                .orElseThrow(NoSuchElementException::new)
+                .getDistance();
+
+        List<String> winners = racingCars.stream()
+                .filter(racingCar -> racingCar.isMaxDistance(maxDistance))
+                .map(RacingCar::getName)
+                .toList();
+
+        outputView.printWinner(winners);
     }
 }

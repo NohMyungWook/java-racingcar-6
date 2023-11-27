@@ -9,4 +9,5 @@ public class Constant {
     public static final int MINIMUM_DICE = 0;
     public static final int MAXIMUM_DICE = 9;
     public static final int START_INDEX = 0;
+    public static final String WINNER_COMMA = ", ";
 }

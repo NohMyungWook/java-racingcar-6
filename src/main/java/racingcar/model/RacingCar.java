@@ -14,12 +14,24 @@ public class RacingCar {
         this.distance = distance;
     }
 
+    public int getDistance() {
+        return distance;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public boolean canMoveForward(int dice) {
         return dice >= CAN_MOVE_DICE;
     }
 
     public void moveForward() {
         distance ++;
+    }
+
+    public boolean isMaxDistance(int distance) {
+        return this.distance == distance;
     }
 
     public String getNameAndDistance() {

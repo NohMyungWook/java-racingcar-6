@@ -21,4 +21,8 @@ public enum ViewMessage {
     public void printLine() {
         System.out.println(message);
     }
+
+    public void renderAndPrint(String s) {
+        System.out.printf(message, s);
+    }
 }
