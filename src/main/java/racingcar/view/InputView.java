@@ -12,7 +12,7 @@ import static racingcar.util.Constant.SEPARATOR_COMMA;
 public class InputView {
 
     public List<String> readRacingCarNames() {
-        ViewMessage.ASK_RACING_CAR_NAMES.print();
+        ViewMessage.ASK_RACING_CAR_NAMES.printLine();
 
         return Arrays.stream(Console.readLine().split(SEPARATOR_COMMA))
                 .map(Parser::parseName)
@@ -20,7 +20,7 @@ public class InputView {
     }
 
     public int readPlayCount() {
-        ViewMessage.ASK_PLAY_COUNT.print();
+        ViewMessage.ASK_PLAY_COUNT.printLine();
 
         return Parser.parseNumber(Console.readLine());
     }
