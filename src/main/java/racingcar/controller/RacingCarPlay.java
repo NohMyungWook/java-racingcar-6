@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.model.CarName;
 import racingcar.model.RacingCar;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -30,7 +31,7 @@ public class RacingCarPlay {
     public List<RacingCar> registerRacingCars() {
         return inputView.readRacingCarNames()
                 .stream()
-                .map(name -> new RacingCar(name, INITIALIZE_DISTANCE))
+                .map(name -> new RacingCar(new CarName(name), INITIALIZE_DISTANCE))
                 .toList();
     }
 
@@ -62,6 +63,7 @@ public class RacingCarPlay {
         List<String> winners = racingCars.stream()
                 .filter(racingCar -> racingCar.isMaxDistance(maxDistance))
                 .map(RacingCar::getName)
+                .map(CarName::getCarName)
                 .toList();
 
         outputView.printWinner(winners);

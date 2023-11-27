@@ -5,11 +5,10 @@ import racingcar.view.constant.ErrorMessage;
 import static racingcar.util.Constant.*;
 
 public class RacingCar {
-    private final String name;
+    private final CarName name;
     private int distance;
 
-    public RacingCar(String name, int distance) {
-        validateCarName(name);
+    public RacingCar(CarName name, int distance) {
         this.name = name;
         this.distance = distance;
     }
@@ -18,7 +17,7 @@ public class RacingCar {
         return distance;
     }
 
-    public String getName() {
+    public CarName getName() {
         return name;
     }
 
@@ -35,12 +34,6 @@ public class RacingCar {
     }
 
     public String getNameAndDistance() {
-        return name + SEPARATOR_COLON + DISTANCE.repeat(distance);
-    }
-
-    private void validateCarName(String name) {
-        if (name.length() > 5) {
-            throw new IllegalArgumentException(ErrorMessage.TOO_LONG_CAR_NAME.getErrorMessage());
-        }
+        return name.getCarName() + SEPARATOR_COLON + DISTANCE.repeat(distance);
     }
 }
