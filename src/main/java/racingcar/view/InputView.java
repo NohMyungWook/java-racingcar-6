@@ -18,4 +18,10 @@ public class InputView {
                 .map(Parser::parseName)
                 .toList();
     }
+
+    public int readPlayCount() {
+        ViewMessage.ASK_PLAY_COUNT.print();
+
+        return Parser.parseNumber(Console.readLine());
+    }
 }

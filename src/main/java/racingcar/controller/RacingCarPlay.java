@@ -11,6 +11,7 @@ public class RacingCarPlay {
     InputView inputView = new InputView();
     public void start() {
         List<RacingCar> racingCars = registerRacingCars();
+        int playCount = getPlayCount();
     }
 
     public List<RacingCar> registerRacingCars() {
@@ -18,5 +19,9 @@ public class RacingCarPlay {
                 .stream()
                 .map(name -> new RacingCar(name, INITIALIZE_DISTANCE))
                 .toList();
+    }
+
+    public int getPlayCount() {
+        return inputView.readPlayCount();
     }
 }
